@@ -135,7 +135,7 @@ main() {
   test $# -eq 1 || { show_usage; return 1; }
   
   local DEST=$1
-  local REPO="${REPO_URL%/}/core/os/$ARCH"
+  local REPO="${REPO_URL%/}/core"
   local PACKDIR=$(mktemp -d)
   trap "rm -rf '$PACKDIR'" KILL TERM EXIT
   debug "destination directory: $DEST"
