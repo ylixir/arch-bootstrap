@@ -27,8 +27,9 @@ PACMAN_PACKAGES=(
 )
 BASIC_PACKAGES=(${PACMAN_PACKAGES[*]} filesystem)
 EXTRA_PACKAGES=(coreutils bash grep gawk file tar systemd)
-DEFAULT_REPO_URL="http://mirrors.kernel.org/archlinux"
-DEFAULT_ARCH=`uname -m`
+#DEFAULT_REPO_URL="http://mirrors.kernel.org/archlinux"
+DEFAULT_REPO_URL="http://mirror.archlinuxarm.org/armv7h"
+DEFAULT_ARCH="armv7h"
 
 # Output to standard error
 stderr() { echo "$@" >&2; }
@@ -60,7 +61,7 @@ configure_pacman() {
   local DEST=$1 ARCH=$2
   debug "configure DNS and pacman"
   cp "/etc/resolv.conf" "$DEST/etc/resolv.conf"
-  echo "Server = $REPO_URL/\$repo/os/$ARCH" >> "$DEST/etc/pacman.d/mirrorlist"
+  echo "Server = $REPO_URL/\$repo" >> "$DEST/etc/pacman.d/mirrorlist"
 }
 
 configure_minimal_system() {
